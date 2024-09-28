@@ -99,3 +99,65 @@ public class Factorial {
         System.out.print("Factorial of the number is: " + fact(n));
     }
 }
+
+
+/*5. Make a function to check if a number is prime or not.*/
+import java.util.*;
+public class PrimeNumber {
+    public static boolean isPrime(int num) {
+        if(num <= 1) {
+            return false;
+        }
+       for(int i=2; i<=num/2; i++) {
+           if((num % i) == 0)
+               return false;
+       }
+       return true;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number: ");
+        int n = sc.nextInt();
+        if(isPrime(n)) {
+            System.out.println(n + " is a Prime Number.");
+        } else {
+            System.out.println(n + " is not a Prime Number.");
+        }
+    }
+}
+
+
+/*6. Make a function to check if a given number n is even or not.*/
+import java.util.*;
+public class EvenNumber {
+    public static void checkEven(int n) {
+        if(n % 2 == 0) {
+            System.out.println(n + " is an Even Number.");
+        } else {
+            System.out.println(n + " is not an Even Number.");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number: ");
+        int n = sc.nextInt();
+        checkEven(n);
+    }
+}
+
+
+/*7. Make a function to print the table of a given number n.*/
+import java.util.*;
+public class Table {
+    public static void tableOfNum(int n) {
+        for(int i=1; i<=10; i++) {
+            System.out.println(n + " x " + i + " = " + (n*i));
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number: ");
+        int n = sc.nextInt();
+        tableOfNum(n);
+    }
+}
