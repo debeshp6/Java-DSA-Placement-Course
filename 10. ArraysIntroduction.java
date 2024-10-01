@@ -136,3 +136,27 @@ public class SearchArray {
         }
     }
 }
+
+
+
+/* Q1. Take an array of names as input from the user and print them on the screen. */
+import java.util.*;
+public class ArraysProb {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter array size: ");
+        int size = sc.nextInt();
+        String names[] = new String[size];
+        //input
+        System.out.println("Enter the names: ");
+        for(int i=0; i<size; i++) {
+            names[i] = sc.next();
+        }
+        //output
+        for(int i=0; i<names.length; i++) {
+            System.out.println("Name no. " + (i+1) + " is: " + names[i]);
+        }
+    }
+}
+
+
