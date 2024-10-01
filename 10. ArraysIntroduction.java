@@ -114,6 +114,7 @@ public class Arrays {
 
 
 /* Qs. Take an array as input from user. Search for a given number x and print the index at which it occurs. */
+// Linear Search
 import java.util.*;
 public class SearchArray {
     public static void main(String[] args) {
