@@ -160,3 +160,76 @@ public class ArraysProb {
 }
 
 
+/*
+
+1. Integer.MAX_VALUE: Integer.MAX_VALUE is a constant in the Integer class of java.lang package that specifies that stores the maximum possible value for any integer variable in Java.
+
+    The actual value of this is: 2^31-1 = 2147483647
+    
+--------------------------------------------------------------------------------------------------------------------------------
+    
+2. Integer.MIN_VALUE: Integer.MIN_VALUE is a constant in the Integer class of java.lang package that specifies that stores the minimum possible value for any integer variable in Java. 
+
+    The actual value of this is: -2^31 = -2147483648
+
+*/
+
+
+/* Q2. Find the maximum & minimum number in an array of integers. */
+import java.util.*;
+public class ArrayMaxMin {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int size = sc.nextInt();
+        int numbers[] = new int[size];
+        // input
+        for(int i=0; i<size; i++) {
+            numbers[i] = sc.nextInt();
+        }
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for(int i=0; i<numbers.length; i++) {
+            if(numbers[i] < min) {
+                min = numbers[i];
+            }
+            if(numbers[i] > max) {
+                max = numbers[i];
+            }
+        }
+        System.out.println("Largest number is: " + max);
+        System.out.println("Smallest number is: " + min);
+    }
+}
+
+
+/* Q3. Take an array of numbers as input and check if it is an array sorted in ascending order.
+    Eg : { 1, 2, 4, 7 } is sorted in ascending order.
+         { 3, 4, 6, 2 } is not sorted in ascending order. */
+import java.util.*;
+public class AscendingArray {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter array size: ");
+        int size = sc.nextInt();
+        int numbers[] = new int[size];
+        
+        // input
+        System.out.println("Enter the elements:");
+        for(int i=0; i<size; i++) {
+            numbers[i] = sc.nextInt();
+        }
+        
+        boolean isAscending = true;
+        for(int i=0; i<numbers.length-1; i++) {
+            if(numbers[i] > numbers[i+1]) {
+                isAscending = false;
+            }
+        }
+        
+        if(isAscending) {
+            System.out.println("The array is sorted in Ascending Order.");
+        } else {
+            System.out.println("The array is not sorted in Ascending Order.");
+        }
+    }
+}
