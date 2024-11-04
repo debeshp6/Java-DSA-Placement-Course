@@ -130,3 +130,115 @@ public class Recursion2 {
 }
 
 
+/* Remove duplicates in a string. ["abbccda"] */
+import java.util.*;
+public class Recursion2 {
+    //time complexity -> O(n)
+    //here n represents the length of string
+    public static boolean[] map = new boolean[26];
+    public static void removeDuplicates(String str, int idx, String newStr) {
+        if(idx == str.length()) {
+            System.out.println(newStr);
+            return;
+        }
+        char currChar = str.charAt(idx);
+        if(map[currChar - 'a'] == true) {
+            removeDuplicates(str, idx+1, newStr);
+        } else {
+            newStr += currChar;
+            map[currChar - 'a'] = true;
+            removeDuplicates(str, idx+1, newStr);
+        }
+    }
+    public static void main(String[] args) {
+        String str = "abbccda";
+        removeDuplicates(str, 0, "");
+    }
+}
+
+
+/* Print all the subsequences of a string. ["abc"] */
+import java.util.*;
+public class Recursion2 {
+    //time complexity -> O(2^n)
+    public static void subSeq(String str, int idx, String newStr) {
+        if(idx == str.length()) {
+            System.out.println(newStr);
+            return;
+        }
+        char currChar = str.charAt(idx);
+        //to be
+        subSeq(str, idx+1, newStr+currChar);
+        //or not to be
+        subSeq(str, idx+1, newStr);
+    }
+    public static void main(String[] args) {
+        String str = "abc";
+        subSeq(str, 0, "");
+    }
+}
+
+
+/* A HashSet in Java is a collection that implements the Set interface, backed by a hash table (actually a HashMap).
+It stores unique elements, and the order of elements is not guaranteed. */
+
+/* Print all the unique subsequences of a string. ["aaa"] */
+import java.util.HashSet;
+public class Recursion2 {
+    //time complexity -> O(2^n)
+    public static void subSeq(String str, int idx, String newStr, HashSet<String> set) {
+        if(idx == str.length()) {
+            if(set.contains(newStr)) {
+                return;
+            } else {
+                System.out.println(newStr);
+                set.add(newStr);
+                return;
+            }
+        }
+        char currChar = str.charAt(idx);
+        //to be
+        subSeq(str, idx+1, newStr+currChar, set);
+        //or not to be
+        subSeq(str, idx+1, newStr, set);
+    }
+    public static void main(String[] args) {
+        String str = "aaa";
+        HashSet<String> set = new HashSet<>();
+        subSeq(str, 0, "", set);
+    }
+}
+
+
+/* Print keypad combination.
+    0 -> .
+    1 -> abc
+    2 -> def
+    3 -> ghi
+    4 -> jkl
+    5 -> mno
+    6 -> pqrs
+    7 -> tu
+    8 -> vwx
+    9 -> yz
+*/
+import java.util.HashSet;
+public class Recursion2 {
+    //time complexity -> O(4^n)
+    public static String[] keypad = {".", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"};
+    public static void printComb(String str, int idx, String combination) {
+        if(idx == str.length()) {
+            System.out.println(combination);
+            return;
+        }
+        char currChar = str.charAt(idx);
+        String mapping = keypad[currChar - '0'];
+        for(int i=0; i<mapping.length(); i++) {
+            printComb(str, idx+1, combination+mapping.charAt(i));
+        }
+    }
+    public static void main(String[] args) {
+        String str = "4";
+        printComb(str, 0, "");
+    }
+}
