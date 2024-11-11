@@ -16,6 +16,57 @@ actually it's 5 a.m. and i am still going strong - no breaks, just the grind :)
 BUT,
 if you want, you can go through this whole documentation --> https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html
 
+collection of classes & interfaces:
 
-  
+                           iterable
+                              ↑
+                          collection
+                              ↑
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         │                    │                         │ 
+         │                    │                         │
+        list                queue                      set
+
+
+
+
+methods on collections:
+
+  1. add
+  2. size
+  3. remove
+  4. iterate
+  5. addAll
+  6. removeAll
+  7. clear
+
+
+i) list interface:
+
+  1. ArrayList
+  2. LinkedList
+  3. Vector --> Stack
+
+
+ ii) queue interface (FIFO):
+
+   1. PriorityQueue
+   2. LinkedList
+   3. Deque (double ended queue) --> ArrayDeque
+
+
+iii) set interface:
+
+  1. HashSet
+  2. LinkedHashSet
+  3. SortedSet --> TreeSet
+
+
+iv) map interface:
+
+  1. HashMap
+  2. LinkedHashMap
+  3. SortedMap --> TreeMap
+  4. Hashtable
+
 */
