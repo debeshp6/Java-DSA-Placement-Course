@@ -1,6 +1,8 @@
 /*
 
-let's start with Classes and Objects!
+nowadays, modern programming languages are basically based on OOPs concept.
+
+sooooo, let's start with Classes and Objects!
 
 classes and objects were introduced in programming so that we can solve real world problems through coding/programming.
 
@@ -27,18 +29,18 @@ an object can operate on both data members and member functions.
 class Pen {
     String color;
     String type; //ballpoint, gel
-    
+    //functions which are defined inside the class, are called methods.
     public void write() { //method 
         System.out.println("writing something");
     }
     
     public void printColor() {
         //‘this’ is a keyword used to represent the method belonging to that particular current object.
-        System.out.println(this.color);
+        System.out.println(this.color); //this - used to access
     }
 }
 
-//main function
+// main function
 public class OOPS { //main function should be in public class
     public static void main(String[] args) {
         Pen pen1 = new Pen(); //object 
@@ -82,6 +84,12 @@ there can be three types of constructors in Java.
     3. copy constructor:  copy constructor is an overloaded constructor used to declare and initialize an object from another 
     object. there is only a user defined copy constructor in java (c++ has a default one too).
 
+>> constructor is a special type of function.
+>> in java constructor's job is to create java objects.
+>> in java program, the constructor name and class name should be same.
+>> constructor's don't return anything. there is no return type. not even voids.
+>> constructor's can be called only once in the class (not like other functions, we can call them again and again).
+
 */
 
 class Student {
@@ -97,7 +105,7 @@ class Student {
 //main function
 public class OOPS { //main function should be in public class
     public static void main(String[] args) {
-       Student s1 = new Student(); //constructor
+       Student s1 = new Student(); //now this 'Student()' is also a special type function called -> Constructor
        s1.name = "aisha";
        s1.age = 26;
        s1.printInfo();
@@ -112,10 +120,27 @@ class Student {
   String name;
   int age;
 
+public void printInfo() {
+    System.out.println(this.name);
+    System.out.println(this.age);
+}
+
   Student() {
     System.out.println("constructor called");
   }
 }
+
+public class OOPS {
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.name = "aisha";
+        s1.age = 26;
+
+        s1.printInfo();
+    }
+}
+
+
 
 
 
@@ -125,7 +150,12 @@ class Student {
   String name;
   int age;
 
-  Student(String name, int age) {
+public void printInfo() {
+        System.out.println(this.name);
+        System.out.println(this.age);
+    }
+
+Student(String name, int age) {
     this.name = name;
     this.age = age;
   }
@@ -137,6 +167,8 @@ public class OOPS {
        s1.printInfo();
     }
 }
+
+
 
 
 
@@ -175,8 +207,7 @@ public class OOPS {
 
 
 
-/* unlike languages like c++, java has no Destructor. instead, java has an efficient garbage collector that deallocates memory automatically.
-*/
+// unlike languages like c++, java has no Destructor. instead, java has an efficient garbage collector that deallocates memory automatically.
 
 
 
@@ -192,9 +223,30 @@ types -> 1. compile time polymorphism (static)
 
 let’s understand them one by one :)
 
+*/
+
+
+
+/*
+
 >> compile time polymorphism -> the polymorphism which is implemented at the compile time is known as compile-time polymorphism.
 example - Method Overloading.
 
+    - method overloading: method overloading is a technique which allows you to have more than one function with the same function name
+    but with different functionality. method overloading can be possible on the following basis:
+    
+    1) the type of the parameters passed to the function. 
+    2) the number of parameters passed to the function.
 
+*/
+
+
+
+/*
+
+>> runtime polymorphism -> runtime polymorphism is also known as dynamic polymorphism. function overriding is an example of runtime polymorphism.
+function overriding means when the child class contains the method which is already present in the parent class. hence, the child class overrides the method of the parent class.
+in case of function overriding, parent and child classes both contain the same function with a different definition. the call to
+the function is determined at runtime is known as runtime polymorphism.
 
 */
