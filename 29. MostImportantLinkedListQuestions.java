@@ -56,3 +56,96 @@ class Solution {
 
 
 
+/* Q2. Check if a Linked List is a palindrome. */
+
+/*
+
+STRATEGY =>
+
+    1. middle of LL
+    2. 2nd half reverse
+    3. check 1st half & 2nd half
+    
+*/
+
+class Solution {
+    
+    public ListNode reverse(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        
+        while(curr != null) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        
+        return prev;
+    }
+    
+    public ListNode findMiddle(ListNode head) {
+        //using hare turtle concept here.
+        //i want you to do a little research on it.
+        ListNode hare = head;
+        ListNode turt = head;
+        
+        while(hare.next != null && hare.next.next != null) {
+            hare = hare.next.next;
+            turt = turt.next;
+        }
+        
+        return turt;
+    }
+    public boolean isPalindrome(ListNode head) {
+        if(head == null || head.next == null) { //head.next means single node
+            return true;
+        }
+        
+        ListNode middle = findMiddle(head); //end of 1st half
+        ListNode secondHalfStart = reverse(middle.next);
+        ListNode firstHalfStart = head;
+        
+        while(secondHalfStart != null) {
+            if(firstHalfStart.val != secondHalfStart) {
+                return false;
+            }
+            firstHalfStart = firstHalfStart.next;
+            secondHalfStart = secondHalfStart.next;
+        }
+        return true;
+    }
+}
+
+
+
+
+
+
+
+/* Q3. Detecting Loop in a Linked List. */
+
+/* we will be using the hare-turtule concept again in this problem. (watch a video tutorial in youtube,
+if you are doing it for the first time) */
+
+public class Solution {
+    //time complexity -> O(n)
+    //space complexity -> O(1)
+    public boolean hasCycle(ListNode head) {
+        
+        if(head == null) return false;
+        
+        ListNode hare = head; //fast
+        ListNode turtule = head; //StackOverflowError
+        
+        while(hare != null && hare.next != null) {
+            hare = hare.next.next; //iincreasing by 2, because hare takes 2 steps
+            turtule = turtule.next; //increasing by 1, because turtule takes 1 step
+            
+            if(hare == turtule) {
+                return true;
+            }
+        }
+        return false;
+    }
+} 
