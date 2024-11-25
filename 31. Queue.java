@@ -21,11 +21,14 @@ Operations:
 => Implementation 2: circular queue using array. [all case TL -> O(1)]
    
    if you don't know what's circular queue, better if u watch a video on YT :D
-   
+
+   a circular queue is an extended version of a normal queue where the last element of the queue is connected to the first element of the queue forming a circle.
+  
    { conditions:  
-     rear = (rear + 1) % size
-     rear + 1 = front    >>>>>>>    if this condition satisfies means queue is full }
-   
+     rear = (rear + 1) % size    >>>>>>>    if this condition satisfies means queue is full
+     rear + 1 = front }
+
+=> Implementation 3: queue using linked list.
 */
 
 
@@ -104,3 +107,213 @@ public class QueueArray {
 
 
 
+
+//circular queue: array implementation
+public class QueueArray {
+
+	static class Queue {
+		static int arr[];
+		static int size;
+		static int rear = -1;
+		static int front = -1;
+		
+
+		Queue(int n) {
+			arr = new int[n];
+			this.size = n;
+		}
+	}
+
+    //empty conditon
+	public static boolean isEmpty() {
+		return rear == -1 && front == -1;
+	}
+	
+	//full conditon
+	public static boolean isFull() {
+	    return (real+1) % size == front;
+	}
+
+	//add function [enque] - O(1)
+	public static void add(int data) {
+		if(isFull()) {
+			System.out.println("queue full");
+			return;
+		}
+		//1st element add
+		if(front == -1) {
+		    front = 0;
+		}
+		rear = (rear+1) % size;
+		arr[rear] = data;
+	}
+
+	//remove function [dequeue] - O(1)
+	public static int remove() {
+		if(isEmpty()) {
+			System.out.println("queue empty");
+			return -1;
+		}
+
+		int result = arr[front];
+		//single element conditon
+		if(rear == front) {
+		    rear = front = -1;
+		} else {
+		    front = (front+1) % size;
+		}
+		return result;
+	}
+
+	//peek function - O(n)
+	public static int peek() {
+		if(isEmpty()) {
+			System.out.println("queue empty");
+			return -1;
+		} 
+		return arr[front];
+	}
+
+	//try to make the main function by yourself, hehe :)
+
+
+	
+
+
+
+
+
+//queue: linked list implementation
+public class QueueLL {
+
+	static class Node {
+		int data;
+		Node next;
+		Node (int data) {
+			this.data = data;
+			next = null;
+		}
+	}
+
+	static class Queue {
+		static Node head = null;
+		static Node tail = null;
+	}
+
+	//empty condition
+	public static boolean isEmpty() {
+		return head == null & tail == null;
+	}
+
+	//add
+	public static void add(int data) {
+		Node newNode = new Node(data);
+		if(tail == null) {
+			tail = head = newNode;
+			return;
+		}
+
+		tail.next = newNode;
+		tail = newNode;
+	}
+
+	//remove
+	public static int remove() {
+		if(isEmpty()) {
+			System.out.println("queue is empty.");
+			return -1;
+		}
+
+		int front = head.data;
+		if(head == tail) {
+			tail = null;
+		}
+
+		head = head.next;
+		return front;
+	}
+
+	//peek
+	public static int peek() {
+		if(isEmpty()) {
+			System.out.println("queue is empty.");
+			return -1;
+		}
+
+		return head.data;
+	}
+
+    	//main function
+	public static void main(String[] args) {
+		Queue q = new Queue();
+		q.add(1);
+		q.add(2);
+		q.add(3);
+		q.add(4);
+		q.add(5);
+
+		while(!q.isEmpty()) {
+			System.out.println(q.peek());
+			q.remove();
+		}
+	}
+}
+
+
+
+
+
+
+//queue: collection framework [using linked list]
+import java.util.*;
+public class QueueCF {
+	public static void main(String[] args) {
+		Queue<Integer> q = new LinkedList<>();
+		
+		q.add(1);
+		q.add(2);
+		q.add(3);
+		q.add(4);
+		q.add(5);
+
+		while(!q.isEmpty()) {
+			System.out.println(q.peek());
+			q.remove();
+		}
+	}
+}
+
+
+
+
+
+//queue: collection framework [using array]
+import java.util.*;
+public class QueueCF {
+	public static void main(String[] args) {
+		Queue<Integer> q = new ArrayDeque<>();
+		
+		q.add(1);
+		q.add(2);
+		q.add(3);
+		q.add(4);
+		q.add(5);
+
+		while(!q.isEmpty()) {
+			System.out.println(q.peek());
+			q.remove();
+		}
+	}
+}
+
+
+
+
+
+
+// let's solve one problem for better understanding :D
+
+/* Qs. Queue using 2 Stacks.
+
+	push [O(n)]
+ 	pop [O(n)] */
